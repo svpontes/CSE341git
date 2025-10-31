@@ -23,8 +23,7 @@ const initDb = (callback) => {
   const dbName = process.env.MONGO_DB || 'userdb'; // fallback
 
   const uri = buildMongoURI(user, pass, host, dbName);
-
-  MongoClient.connect(uri, { useUnifiedTopology: true })
+  MongoClient.connect(uri)
     .then((client) => {
       _db = client.db(dbName);
       console.log('Success connection at MongoDB!');
